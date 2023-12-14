@@ -1,7 +1,6 @@
 require 'telegram/bot'
 require_relative 'utils'
 require_relative 'variables'
-require_relative 'instadl_handler'
 
 puts "Bot started at #{Time.now}"
 puts "▶ A simple project made using Ruby Language by 🄺🄰🅁🄼🄰"
@@ -24,8 +23,6 @@ Telegram::Bot::Client.run(Variables::TOKEN) do |bot|
     when '/joke'
       joke = get_single_joke(Variables::JOKE_API_ENDPOINT)
       bot.api.send_message(chat_id: message.chat.id, text: joke)
-    when '/instadl'
-      InstadlHandler.handle_instadl(bot, message)
     end
   end
 end
